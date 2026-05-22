@@ -52,7 +52,7 @@
             .style("opacity", 0);
 
         // 設定為自己字的檔名
-        var myImg = "112590058.png";
+        var myImg = "112590058.jpg";
         
         d3.csv("results.csv").then(function(data) {
 
@@ -152,6 +152,14 @@
                         .style("opacity", 0);
                 });
             
+        }).catch(function(error) {
+            d3.select("body")
+                .append("div")
+                .style("font", "18px sans-serif")
+                .style("padding", "24px")
+                .style("color", "#b00020")
+                .html("圖表資料讀取失敗。請用 localhost 開啟 index.html，不要直接雙擊檔案開啟。");
+            console.error(error);
         });
 
     </script>
