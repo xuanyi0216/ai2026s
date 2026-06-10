@@ -1,20 +1,16 @@
 <!doctype html>
 <html lang="zh-Hant-TW">
 <head>
-<!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- D3, jquery -->
 <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" charset="utf-8"></script>
 
-<!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
 
 <title>作業五</title>
-<!-- https://alexlenail.me/NN-SVG/about.html -->
 <link rel="icon" href="../hw00/favicon.svg"/>
 <style type="text/css">
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap');
@@ -26,7 +22,7 @@
 
   table {
       border-collapse: collapse;
-      border: 2px solid white; /* rgba(217,140,144,1) */
+      border: 2px solid white;
       font-size:  16pt;
       margin-left: auto;
       margin-right: auto;
@@ -132,7 +128,6 @@
 
 <div class="container-fluid">
 
-  <!-- ---------------------------------------------- -->
   <div class="row hw12 toprow">
     <div class="col twenty"><a href="../hw00/index.html">00</a></div>
     <div class="col twenty"><a href="../hw01/index.html">01</a></div>
@@ -143,21 +138,18 @@
     <div class="col twenty"><a href="../hw06/index.html">06</a></div>
   </div>
 
-  <!-- ------------------------------------------------>
   <div class="row hw12">
     <div class="col-md-12 twenty">
       <h1>作業 05</h1>
     </div>
   </div>
 
-  <!-- ------------------------------------------------>
   <div class="row hw12">
     <div class="col-md-12 twenty">
-      心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。
+      這次作業透過 ComfyUI 體驗了節點式文生圖的完整工作流程。比起過去單純輸入提示詞，這種將 Checkpoint、LoRA 與 KSampler 串聯的方式，更能直觀理解 AI 生成圖像時的權重與邏輯。在實驗過程中，我利用不同的提示詞與參數配置，成功為《葬送的芙莉蓮》中的芙莉蓮與欣梅爾生成出帶有情感氛圍的動漫特寫鏡頭。藉由調整降噪與步數，也讓我深刻體會到 AI 圖像微調的樂趣，是一次非常實用的技術實踐。
     </div>
   </div>
 
-  <!-- ------------------------------------------------>
   <div class="row hw12">
     <div class="col-md-12 twenty">
       <table>
@@ -169,43 +161,75 @@
         </tr>
         <tr>
           <td rowspan="4" id="myTotal"></td>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox1"></td>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox1" checked></td>
           <td id='m1'>4</td>
-          <td>Simple baseline - 描述</td>
+          <td>Simple baseline - 描述工作流與生成芙莉蓮、欣梅爾圖像</td>
         </tr>
         <tr>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox2"></td>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox2" checked></td>
           <td id='m2'>4</td>
-          <td>Medium baseline - 描述</td>
+          <td>Medium baseline - 替換 Checkpoint 或加入 LoRA 進行微調生成</td>
         </tr>
         <tr>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox3"></td>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox3" checked></td>
           <td id='m3'>2</td>
-          <td>Strong baseline - 描述</td>
+          <td>Strong baseline - 完整網頁排版與參數呈現</td>
         </tr>
         <tr>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox4" checked></td>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox4"></td>
           <td id='m4'>-10</td>
           <td>沒有寫100字心得</td>
         </tr>
-
       </table>
     </div>
   </div>
 
-  <!-- ------------------------------------------------>
-  <div class="row hw12 bottomrow">
-    <div class="col-md-12 twenty">
-      <video id="video1" style="width:100%;max-width:100%;" controls="">
-        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-      </video>
+  <div class="row hw12">
+    <div class="col-md-12 twenty" style="background-color:#00AC48;">    
+      <figure>
+        <figcaption>ComfyUI 工作流展示 (Nodes Workflow)</figcaption>
+        <p>使用 KSampler、CLIP Text Encode 與 VAE Decode 節點建立的圖像生成架構。</p>
+        <img src="工作流.png" width="100%"/>
+      </figure>
     </div>
   </div>
 
-  <!-- ------------------------------------------------>
+  <div class="row hw12">
+    <div class="col-md-12 twenty" style="background-color:#007acc;"> 
+      <figure>
+        <figcaption>文生圖成果一：葬送的芙莉蓮 (Frieren)</figcaption>
+        <a href="https://civitai.com/models/820208/obsession-illustrious-xl" target="_blank">Checkpoint: Obsession.safetensors</a>
+        <br>
+        <a href="https://civitai.com/models/1204563" target="_blank">LoRA: maimaifrieren.safetensors (Strength: 1.00)</a>
+        <p>解析度: 1344 * 768 | 步數 (Steps): 25 | CFG: 6.0 | 採樣器: euler_ancestral</p>
+        <p><strong>正向提示詞 (Positive Prompt):</strong><br>
+        masterpiece, best quality, anime screencap, frieren, sousou no frieren, elf girl, white long hair, green eyes, elf ears, twintails, fantasy robe, magical forest, glowing butterflies, soft sunlight, emotional atmosphere, detailed face, beautiful eyes, cinematic lighting, high quality
+        </p>
+        <p><strong>反向提示詞 (Negative Prompt):</strong><br>
+        low quality, worst quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, deformed face, text, watermark, signature, cropped, jpeg artifacts
+        </p>
+        <img src="芙莉蓮.png" width="100%"/>
+      </figure>
+    </div>
+  </div>
 
-  <!-- ------------------------------------------------>
+  <div class="row hw12 bottomrow">
+    <div class="col-md-12 twenty" style="background-color:#7030a0;">    
+      <figure>
+        <figcaption>文生圖成果二：勇者欣梅爾 (Himmel)</figcaption>
+        <p>透過相同工作流基礎，替換角色特徵提示詞生成的特寫畫面。</p>
+        <p><strong>正向提示詞 (Positive Prompt):</strong><br>
+        masterpiece, best quality, anime screencap, himmel, sousou no frieren, young man, light blue hair, blue eyes, handsome face, hero cape, capelet, golden brooch, gentle smile, magical blue background, glowing particles, emotional scene, detailed, cinematic lighting, high quality
+        </p>
+        <p><strong>反向提示詞 (Negative Prompt):</strong><br>
+        low quality, worst quality, blurry, bad anatomy, bad hands, text, watermark, signature, cropped, deformed body, bad proportions
+        </p>
+        <img src="辛梅爾.png" width="100%"/>
+      </figure>
+    </div>
+  </div>
 
+</div>
 
 <script>
   $(function() {
@@ -219,37 +243,18 @@
   d3.select("#myCheckbox2").on("change",update);
   d3.select("#myCheckbox3").on("change",update);
   d3.select("#myCheckbox4").on("change",update);
-  // d3.select("#myCheckbox5").on("change",update);
-  // d3.select("#myCheckbox6").on("change",update);
-  // d3.select("#myCheckbox7").on("change",update);
 
   update();
   
   function update(){
-
     var score = 0;
-
-    if (d3.select("#myCheckbox1").property("checked")){
-      score += parseInt(d3.select('#m1').html());
-    }
-
-    if (d3.select("#myCheckbox2").property("checked")){
-      score += parseInt(d3.select('#m2').html());   
-    }
-
-    if (d3.select("#myCheckbox3").property("checked")){
-      score += parseInt(d3.select('#m3').html());   
-    }
-
-    if (d3.select("#myCheckbox4").property("checked")){
-      score += parseInt(d3.select('#m4').html());   
-    }
-
-
+    if (d3.select("#myCheckbox1").property("checked")){ score += parseInt(d3.select('#m1').html()); }
+    if (d3.select("#myCheckbox2").property("checked")){ score += parseInt(d3.select('#m2').html()); }
+    if (d3.select("#myCheckbox3").property("checked")){ score += parseInt(d3.select('#m3').html()); }
+    if (d3.select("#myCheckbox4").property("checked")){ score += parseInt(d3.select('#m4').html()); }
     d3.select("#myTotal").html(score);    
   }
 </script>
 
 </body>
 </html>
-
