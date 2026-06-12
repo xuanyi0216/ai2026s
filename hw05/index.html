@@ -10,14 +10,14 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
 
-<title>作業五</title>
+<title>作業 05</title>
 <link rel="icon" href="../hw00/favicon.svg"/>
 <style type="text/css">
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap');
 
   @font-face {
     font-family:'CircleFont';
-    src: url(https://circle472.github.io/ct2022s/hw04/CircleFont_v2.woff2); 
+    src: url(https://circle472.github.io/ct2022s/hw04/CircleFont_v2.woff2);
   }
 
   table {
@@ -54,14 +54,14 @@
   {
       position:absolute;
       top:5%;
-      display:block; 
+      display:block;
       line-height:16px;
       width:45%;
       height:90%;
       background:#fff;
       box-sizing:border-box;
       text-align:center;
-      transition: all 0.3s ease-in 0s; 
+      transition: all 0.3s ease-in 0s;
       color:rgba(159,53,58,1);
       border:#888 1px solid;
       border-radius:3px;
@@ -111,7 +111,7 @@
 
   .twenty:hover {
       box-shadow: 0 0 5px 3px #f9eced;
-      color: cyan; 
+      color: cyan;
       text-shadow: 0 0 6px #FFFFFF, 0 0 6px #000000;
   }
 
@@ -155,76 +155,58 @@
       <table>
         <tr>
           <th>總分</th>
-          <th>完成後打勾</th>
-          <th>配分</th>
-          <th>分項描述</th>
+          <th>完成狀態</th>
+          <th>分數</th>
+          <th>評分項目</th>
         </tr>
         <tr>
           <td rowspan="4" id="myTotal"></td>
           <td><input type="checkbox" class="flipswitch" id="myCheckbox1" checked></td>
           <td id='m1'>4</td>
-          <td>Simple baseline - 描述工作流與生成芙莉蓮、欣梅爾圖像</td>
+          <td>Simple baseline - 完成 ComfyUI 工作流與文生圖</td>
         </tr>
         <tr>
           <td><input type="checkbox" class="flipswitch" id="myCheckbox2" checked></td>
           <td id='m2'>4</td>
-          <td>Medium baseline - 替換 Checkpoint 或加入 LoRA 進行微調生成</td>
+          <td>Medium baseline - 替換 Checkpoint 與 LoRA 完成文生圖</td>
         </tr>
         <tr>
           <td><input type="checkbox" class="flipswitch" id="myCheckbox3" checked></td>
           <td id='m3'>2</td>
-          <td>Strong baseline - 完整網頁排版與參數呈現</td>
+          <td>Strong baseline - 網頁內容、提示詞與圖片展示完整</td>
         </tr>
         <tr>
           <td><input type="checkbox" class="flipswitch" id="myCheckbox4"></td>
           <td id='m4'>-10</td>
-          <td>沒有寫100字心得</td>
+          <td>未滿 100 字或圖片缺漏</td>
         </tr>
       </table>
     </div>
   </div>
 
   <div class="row hw12">
-    <div class="col-md-12 twenty" style="background-color:#00AC48;">    
+    <div class="col-md-12 twenty" style="background-color:#00AC48;">
       <figure>
-        <figcaption>ComfyUI 工作流展示 (Nodes Workflow)</figcaption>
-        <p>使用 KSampler、CLIP Text Encode 與 VAE Decode 節點建立的圖像生成架構。</p>
+        <figcaption>ComfyUI工作流</figcaption>
         <img src="工作流.png" width="100%"/>
       </figure>
     </div>
   </div>
 
   <div class="row hw12">
-    <div class="col-md-12 twenty" style="background-color:#007acc;"> 
+    <div class="col-md-12 twenty" style="background-color:#ff0000;">
       <figure>
-        <figcaption>文生圖成果一：葬送的芙莉蓮 (Frieren)</figcaption>
-        <a href="https://civitai.com/models/820208/obsession-illustrious-xl" target="_blank">Checkpoint: Obsession.safetensors</a>
-        <br>
-        <a href="https://civitai.com/models/1204563" target="_blank">LoRA: maimaifrieren.safetensors (Strength: 1.00)</a>
-        <p>解析度: 1344 * 768 | 步數 (Steps): 25 | CFG: 6.0 | 採樣器: euler_ancestral</p>
-        <p><strong>正向提示詞 (Positive Prompt):</strong><br>
-        masterpiece, best quality, anime screencap, frieren, sousou no frieren, elf girl, white long hair, green eyes, elf ears, twintails, fantasy robe, magical forest, glowing butterflies, soft sunlight, emotional atmosphere, detailed face, beautiful eyes, cinematic lighting, high quality
-        </p>
-        <p><strong>反向提示詞 (Negative Prompt):</strong><br>
-        low quality, worst quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, deformed face, text, watermark, signature, cropped, jpeg artifacts
-        </p>
-        <img src="芙莉蓮.png" width="100%"/>
+        <figcaption>完成芙莉蓮、欣梅爾Checkpoint文生圖</figcaption>
+        <img src="1.png" width="100%"/>
       </figure>
     </div>
   </div>
 
   <div class="row hw12 bottomrow">
-    <div class="col-md-12 twenty" style="background-color:#7030a0;">    
+    <div class="col-md-12 twenty" style="background-color:#7030a0;">
       <figure>
-        <figcaption>文生圖成果二：勇者欣梅爾 (Himmel)</figcaption>
-        <p>透過相同工作流基礎，替換角色特徵提示詞生成的特寫畫面。</p>
-        <p><strong>正向提示詞 (Positive Prompt):</strong><br>
-        masterpiece, best quality, anime screencap, himmel, sousou no frieren, young man, light blue hair, blue eyes, handsome face, hero cape, capelet, golden brooch, gentle smile, magical blue background, glowing particles, emotional scene, detailed, cinematic lighting, high quality
-        </p>
-        <p><strong>反向提示詞 (Negative Prompt):</strong><br>
-        low quality, worst quality, blurry, bad anatomy, bad hands, text, watermark, signature, cropped, deformed body, bad proportions
-        </p>
-        <img src="辛梅爾.png" width="100%"/>
+        <figcaption>替換Checkpoint、LoRA完成芙莉蓮、欣梅爾文生圖</figcaption>
+        <img src="2.png" width="100%"/>
       </figure>
     </div>
   </div>
@@ -234,7 +216,7 @@
 <script>
   $(function() {
     var f = function() {
-      $(this).next().text($(this).is(':checked') ? '做完' : '未做完');
+      $(this).next().text($(this).is(':checked') ? '完成' : '未完成');
     };
     $('input').change(f).trigger('change');
   });
@@ -245,14 +227,14 @@
   d3.select("#myCheckbox4").on("change",update);
 
   update();
-  
+
   function update(){
     var score = 0;
     if (d3.select("#myCheckbox1").property("checked")){ score += parseInt(d3.select('#m1').html()); }
     if (d3.select("#myCheckbox2").property("checked")){ score += parseInt(d3.select('#m2').html()); }
     if (d3.select("#myCheckbox3").property("checked")){ score += parseInt(d3.select('#m3').html()); }
     if (d3.select("#myCheckbox4").property("checked")){ score += parseInt(d3.select('#m4').html()); }
-    d3.select("#myTotal").html(score);    
+    d3.select("#myTotal").html(score);
   }
 </script>
 
